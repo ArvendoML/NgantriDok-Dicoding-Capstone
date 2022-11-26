@@ -1,0 +1,28 @@
+#root #loginPage {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+#loginPage form {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 10px;
+    height: 500px;
+    max-width: 500px;
+}
+
+.form-main {
+    flex: 1;
+    padding-top: 25px;
+}
+
+.form-footer p {
+    text-align: center;
+}
+
+.btn-login {
+    width: 100%;
+}
