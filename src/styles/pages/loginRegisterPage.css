@@ -1,10 +1,12 @@
-#root #loginPage {
+#loginPage,
+#registerPage {
     display: flex;
     flex: 1;
     align-items: center;
 }
 
-#loginPage form {
+#loginPage form,
+#registerPage form {
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);

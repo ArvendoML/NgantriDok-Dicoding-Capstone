@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../../styles/pages/loginPage.css";
+import "../../styles/pages/loginRegisterPage.css";
 
 function Register() {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ function Register() {
   };
 
   return (
-    <section id="loginPage">
+    <section id="registerPage">
       <form className="container">
         <h1>Logo</h1>
         <div className="form-main">
