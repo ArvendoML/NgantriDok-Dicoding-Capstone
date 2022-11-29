@@ -1,0 +1,41 @@
+#hospitalListPage {
+    padding: 30px;
+}
+
+#hospitalListPage h1 {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.hospital-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 25px;
+}
+
+.hospital-item-card {
+    transition: transform .2s;
+}
+
+.hospital-item-card:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+.hospital-item-card .card {
+    border: transparent;
+    box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hospital-item-card .card-img-overlay {
+    top: auto !important;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.hospital-item-card .card-img-overlay td:nth-child(2) {
+    padding-left: 15px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}

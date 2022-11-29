@@ -5,6 +5,10 @@
     gap: 30px
 }
 
+.user-queue-info_left table {
+    margin-bottom: 0 !important;
+}
+
 .user-queue-info_left,
 .user-queue-info_right {
     box-shadow: 0 3px 10px 5px rgba(0, 0, 0, 0.3);

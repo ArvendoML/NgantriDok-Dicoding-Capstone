@@ -49,7 +49,7 @@ function QueuePage() {
             </tr>
             <tr>
               <td>No. Antrian</td>
-              <td className="align-middle">1</td>
+              <td className="align-middle user-queue-number">1</td>
             </tr>
             <tr>
               <td>Gejala</td>

@@ -10,7 +10,7 @@ function Header() {
         <h1>Logo</h1>
       </Link>
       <section className="header-right">
-        <Link to="/queue" className="btn btn-primary">
+        <Link to="/list" className="btn btn-primary">
           Daftar Tempat
         </Link>
         <Link to="/queue" className="btn btn-primary">
