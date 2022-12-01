@@ -1,3 +1,7 @@
+:root {
+    --color-main: #153462;
+}
+
 * {
     box-sizing: border-box;
 }

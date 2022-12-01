@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/pages/loginRegisterPage.css";
+import appLogo from "../../public/images/ngantriDok-logo.png";
 
 function Login() {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ function Login() {
   return (
     <section id="loginPage">
       <form className="container">
-        <h1>Logo</h1>
+        <img src={appLogo} alt="NgantriDok" className="app-img-logo" />
         <div className="form-main">
           <div className="mb-3">
             <label className="form-label">Email</label>
