@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/layout/header.css";
-import avatarImg from "../../public/images/avatar.png";
-import appLogo from "../../public/images/ngantriDok-logo.png";
+import "../../../styles/layout/header.css";
+import avatarImg from "../../../public/images/avatar.png";
+import appLogo from "../../../public/images/ngantriDok-logo.png";
 
-function Header() {
+function HeaderOwner() {
   return (
-    <header id="headerMain">
+    <header id="headerOwner">
       <Link to="/">
         <img src={appLogo} alt="NgantriDok" className="app-img-logo" />
       </Link>
@@ -29,4 +29,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderOwner;

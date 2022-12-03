@@ -17,7 +17,13 @@ function QueuePage() {
           <table className="table table-hover">
             <tbody>
               <tr>
-                <td className="align-middle">No. Telepon</td>
+                <td>Nama</td>
+                <td className="align-middle">
+                  <strong>Rumah Sakit Dummy</strong>
+                </td>
+              </tr>
+              <tr>
+                <td>No. Telepon</td>
                 <td className="align-middle">987654321</td>
               </tr>
               <tr>

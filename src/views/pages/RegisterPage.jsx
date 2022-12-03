@@ -21,21 +21,21 @@ function Register() {
     setPassword(event.target.value);
   };
 
-  const handleSubmitButton = (event) => {
+  const handleOnSubmitButton = (event) => {
     event.preventDefault();
     console.log(email, password, username);
     navigate("/login");
   };
 
   return (
-    <section id="registerPage">
+    <section id="registerPage" onSubmit={handleOnSubmitButton}>
       <form className="container">
         <img src={appLogo} alt="NgantriDok" className="app-img-logo" />
         <div className="form-main">
           <div className="mb-3">
             <label className="form-label">Username</label>
             <input
-              type="email"
+              type="text"
               className="form-control"
               placeholder="Example"
               onChange={handleOnChangeUsername}
@@ -59,14 +59,14 @@ function Register() {
               className="form-control"
               placeholder="*********"
               onChange={handleOnChangePassword}
+              required
             />
           </div>
         </div>
         <div className="form-footer">
           <button
-            type="button"
-            className="btn btn-primary btn-login"
-            onClick={(e) => handleSubmitButton(e)}
+            type="submit"
+            className="btn btn-success btn-login"
           >
             Register
           </button>

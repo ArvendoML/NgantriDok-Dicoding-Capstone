@@ -13,6 +13,14 @@
     transition: transform .2s;
 }
 
+.hospital-item-card a {
+    color: inherit;
+}
+
+.hospital-item-card a:hover {
+    color: gray;
+}
+
 .hospital-item-card:hover {
     transform: scale(1.05);
     z-index: 10;

@@ -3,7 +3,7 @@ import "../../styles/pages/hospitalListPage.css";
 import HospitalItemCard from "../components/HospitalItemCard";
 
 function HospitalListPage() {
-  const test = [1, 2, 3, 1, 1, 1];
+  const test = [1, 2, 3, 4, 5, 6];
 
   return (
     <main id="hospitalListPage">

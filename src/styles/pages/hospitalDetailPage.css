@@ -1,0 +1,34 @@
+#hospitalDetailPage ol {
+    padding-left: 16px;
+    margin: 0;
+}
+
+#hospitalDetailPage table tbody tr:nth-child(1) {
+    font-weight: bold;
+}
+
+.hospital-detail-container {
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+    display: flex;
+}
+
+.hospital-detail_left {
+    width: 40%;
+}
+
+.hospital-detail_left img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.hospital-detail_right {
+    width: 60%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-daftar {
+    margin-top: auto;
+    width: 100%;
+}
