@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/pages/hospitalQueueRegistration.css";
 
-function HospitalQueueRegistration() {
+const HospitalQueueRegistration = () => {
   const navigate = useNavigate();
   const [patientName, setPatientName] = useState();
   const [patientAge, setPatientAge] = useState();
@@ -93,6 +93,6 @@ function HospitalQueueRegistration() {
       </form>
     </main>
   );
-}
+};
 
 export default HospitalQueueRegistration;

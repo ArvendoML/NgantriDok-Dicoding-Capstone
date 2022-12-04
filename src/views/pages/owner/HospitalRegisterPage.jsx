@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../../styles/pages/loginRegisterPage.css";
 import appLogo from "../../../public/images/ngantriDok-logo.png";
+import { getUserData } from "../../../scripts/userData";
 
-function Register() {
+const HospitalRegisterPage = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [address, setAddress] = useState();
+  const [description, setDescription] = useState();
 
   const handleOnChangeUsername = (event) => {
     setUsername(event.target.value);
@@ -21,19 +25,37 @@ function Register() {
     setPassword(event.target.value);
   };
 
+  const handleOnChangePhoneNumber = (event) => {
+    setPhoneNumber(event.target.value);
+  };
+
+  const handleOnChangeAddress = (event) => {
+    setAddress(event.target.value);
+  };
+
+  const handleOnChangeDescription = (event) => {
+    setDescription(event.target.value);
+  };
+
   const handleOnSubmitButton = (event) => {
     event.preventDefault();
-    console.log(email, password, username);
+    console.log(email, password, username, phoneNumber, address, description);
     navigate("/login");
   };
 
+  useEffect(() => {
+    if (getUserData() !== null) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <section id="registerPage" onSubmit={handleOnSubmitButton}>
-      <form className="container">
+      <form className="container hospital-register-form">
         <img src={appLogo} alt="NgantriDok" className="app-img-logo" />
         <div className="form-main">
           <div className="mb-3">
-            <label className="form-label">Username</label>
+            <label className="form-label">Nama Rumah Sakit</label>
             <input
               type="text"
               className="form-control"
@@ -62,20 +84,50 @@ function Register() {
               required
             />
           </div>
+          <div className="mb-3">
+            <label className="form-label">No. Telepon</label>
+            <input
+              type="number"
+              className="form-control"
+              placeholder="ex: 08121234567"
+              minLength={10}
+              min={0}
+              onChange={handleOnChangePhoneNumber}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Alamat</label>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="ex: Jalan Muhammad Yani"
+              onChange={handleOnChangeAddress}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Deskripsi</label>
+            <textarea
+              type="password"
+              className="form-control"
+              placeholder="Deskripsikan rumah sakitmu (spesialisasi, dll)"
+              onChange={handleOnChangeDescription}
+              required
+            />
+          </div>
         </div>
         <div className="form-footer">
           <button type="submit" className="btn btn-success btn-login">
             Register
           </button>
           <p>
-            Sudah punya akun?
-            {' '}
-            <Link to="/login">Masuk disini!</Link>
+            Sudah punya akun? <Link to="/login">Masuk disini!</Link>
           </p>
         </div>
       </form>
     </section>
   );
-}
+};
 
-export default Register;
+export default HospitalRegisterPage;

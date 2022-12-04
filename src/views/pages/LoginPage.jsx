@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/pages/loginRegisterPage.css";
 import appLogo from "../../public/images/ngantriDok-logo.png";
+import { login } from "../../scripts/auth";
+import { getUserData } from "../../scripts/userData";
 
-function Login() {
+const Login = ({ setAuthedUser }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -16,11 +18,23 @@ function Login() {
     setPassword(event.target.value);
   };
 
-  const handleOnSubmitButton = (event) => {
+  const handleOnSubmitButton = async (event) => {
     event.preventDefault();
-    console.log(email, password);
-    navigate("/");
+    const loginSuccess = await login(email, password);
+
+    if (loginSuccess === true) {
+      setAuthedUser(getUserData());
+      navigate("/");
+    } else {
+      alert("Email/Password invalid!");
+    }
   };
+
+  useEffect(() => {
+    if (getUserData() !== null) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <section id="loginPage" onSubmit={handleOnSubmitButton}>
@@ -31,6 +45,7 @@ function Login() {
             <label className="form-label">Email</label>
             <input
               type="email"
+              name="email"
               className="form-control"
               placeholder="example@gmail.com"
               onChange={handleOnChangeEmail}
@@ -41,6 +56,7 @@ function Login() {
             <label className="form-label">Password</label>
             <input
               type="password"
+              name="password"
               className="form-control"
               placeholder="*********"
               onChange={handleOnChangePassword}
@@ -52,14 +68,12 @@ function Login() {
             Login
           </button>
           <p>
-            Belum punya akun?
-            {' '}
-            <Link to="/register/user">Daftar disini!</Link>
+            Belum punya akun? <Link to="/register/user">Daftar disini!</Link>
           </p>
         </div>
       </form>
     </section>
   );
-}
+};
 
 export default Login;

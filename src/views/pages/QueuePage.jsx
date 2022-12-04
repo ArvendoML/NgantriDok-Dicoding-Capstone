@@ -1,8 +1,25 @@
 import React from "react";
 import "../../styles/pages/queuePage.css";
 import dummyImg from "../../public/images/rumah-sakit.png";
+import { getUserData } from "../../scripts/userData";
+import { Link } from "react-router-dom";
 
-function QueuePage() {
+const QueuePage = () => {
+  const authedUser = getUserData();
+
+  if (authedUser === null) {
+    return (
+      <main id="queuePage">
+        <section className="user-queue-notLogged">
+          <h1>Silahkan Masuk Terlebih Dahulu!</h1>
+          <Link to="/login" className="btn btn-success">
+            Masuk Disini!
+          </Link>
+        </section>
+      </main>
+    );
+  }
+
   return (
     <main id="queuePage" className="container">
       <section className="user-queue-info_left">
@@ -71,6 +88,6 @@ function QueuePage() {
       </section>
     </main>
   );
-}
+};
 
 export default QueuePage;

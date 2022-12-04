@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import appLogo from "../../public/images/ngantriDok-logo.png";
 import "../../styles/layout/footer.css";
 
-function Footer() {
+const Footer = () => {
   return (
     <footer>
       <div>

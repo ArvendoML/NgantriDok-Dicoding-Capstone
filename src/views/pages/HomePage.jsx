@@ -6,7 +6,7 @@ import { BsHandThumbsUp } from "react-icons/bs";
 import heroImg from "../../public/images/hero-img.png";
 import "../../styles/pages/mainPage.css";
 
-function HomePage() {
+const HomePage = () => {
   return (
     <main id="mainPage">
       <section className="main-hero-section">
@@ -57,7 +57,7 @@ function HomePage() {
           </div>
           <div className="main-register_link_section">
             <h3>Pemilik Rumah Sakit?</h3>
-            <Link to="/register/user" className="btn btn-info">
+            <Link to="/register/hospital" className="btn btn-info">
               Daftar Disini!
             </Link>
           </div>

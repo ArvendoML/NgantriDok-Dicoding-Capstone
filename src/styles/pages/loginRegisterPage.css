@@ -6,7 +6,7 @@
 }
 
 #loginPage .app-img-logo,
-#registerPage  .app-img-logo {
+#registerPage .app-img-logo {
     height: fit-content;
     width: 60%;
     align-self: center;
@@ -16,17 +16,34 @@
 #registerPage form {
     display: flex;
     flex-direction: column;
+    position: relative;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
     padding: 30px;
     padding-top: 40px;
     border-radius: 10px;
-    height: 500px;
+    min-height: 500px;
     max-width: 500px;
 }
 
 .form-main {
     flex: 1;
     padding-top: 25px;
+}
+
+.goTo-register-hospital {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    padding-inline: 10px;
+    background-color: green;
+    color: white;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.goTo-register-hospital:hover {
+    color: rgb(198, 198, 198);
 }
 
 .form-footer p {
@@ -40,4 +57,17 @@
 
 .btn-login:hover {
     background-color: #214d90 !important;
+}
+
+.hospital-register-form {
+    height: fit-content !important;
+    margin-block: 50px;
+}
+
+.hospital-register-form textarea {
+    min-height: 100px !important;
+}
+
+.hospital-register-form button {
+    margin-top: 30px;
 }

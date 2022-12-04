@@ -4,19 +4,19 @@ import "../../../styles/layout/header.css";
 import avatarImg from "../../../public/images/avatar.png";
 import appLogo from "../../../public/images/ngantriDok-logo.png";
 
-function HeaderOwner() {
+const HeaderOwner = () => {
   return (
     <header id="headerOwner">
       <Link to="/">
         <img src={appLogo} alt="NgantriDok" className="app-img-logo" />
       </Link>
       <section className="header-right">
-        <Link to="/list" className="btn btn-primary">
+        <a href="#top" className="btn btn-primary">
           Daftar Tempat
-        </Link>
-        <Link to="/queue" className="btn btn-primary">
+        </a>
+        <a href="#hospital-patient-list" className="btn btn-primary">
           Antrian
-        </Link>
+        </a>
         <div className="header-user-info">
           <p>Nama</p>
           <img src={avatarImg} alt="avatar" className="header-avatar" />
@@ -27,6 +27,6 @@ function HeaderOwner() {
       </section>
     </header>
   );
-}
+};
 
 export default HeaderOwner;

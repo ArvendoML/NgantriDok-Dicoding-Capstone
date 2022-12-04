@@ -1,10 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { GrLogin, GrLogout } from "react-icons/gr";
 import "../../styles/layout/header.css";
 import avatarImg from "../../public/images/avatar.png";
 import appLogo from "../../public/images/ngantriDok-logo.png";
+import { logout } from "../../scripts/auth";
 
-function Header() {
+const Header = ({ authedUser, setAuthedUser }) => {
+  const navigate = useNavigate();
+
+  const handleOnClickLogout = () => {
+    logout();
+    setAuthedUser(null);
+    navigate("/");
+  };
+
   return (
     <header id="headerMain">
       <Link to="/">
@@ -18,15 +28,23 @@ function Header() {
           Antrian
         </Link>
         <div className="header-user-info">
-          <p>Nama</p>
-          <img src={avatarImg} alt="avatar" className="header-avatar" />
-          <Link to="/login" className="btn btn-primary btn-login-header">
-            Login
-          </Link>
+          {authedUser === null ? (
+            <Link to="/login" className="btn-login-header">
+              <GrLogin />
+            </Link>
+          ) : (
+            <>
+              <p>{authedUser.name}</p>
+              <img src={avatarImg} alt="avatar" className="header-avatar" />
+              <button onClick={() => handleOnClickLogout()} className="btn-logout-header">
+                <GrLogout />
+              </button>
+            </>
+          )}
         </div>
       </section>
     </header>
   );
-}
+};
 
 export default Header;

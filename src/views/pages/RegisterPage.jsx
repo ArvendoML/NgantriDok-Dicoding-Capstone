@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/pages/loginRegisterPage.css";
 import appLogo from "../../public/images/ngantriDok-logo.png";
+import { getUserData } from "../../scripts/userData";
 
-function Register() {
+const Register = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
@@ -27,9 +28,18 @@ function Register() {
     navigate("/login");
   };
 
+  useEffect(() => {
+    if (getUserData() !== null) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <section id="registerPage" onSubmit={handleOnSubmitButton}>
       <form className="container">
+        <Link to="/register/hospital" className="goTo-register-hospital">
+          Daftar Rumah Sakit disini!
+        </Link>
         <img src={appLogo} alt="NgantriDok" className="app-img-logo" />
         <div className="form-main">
           <div className="mb-3">
@@ -64,21 +74,16 @@ function Register() {
           </div>
         </div>
         <div className="form-footer">
-          <button
-            type="submit"
-            className="btn btn-success btn-login"
-          >
+          <button type="submit" className="btn btn-success btn-login">
             Register
           </button>
           <p>
-            Sudah punya akun?
-            {' '}
-            <Link to="/login">Masuk disini!</Link>
+            Sudah punya akun? <Link to="/login">Masuk disini!</Link>
           </p>
         </div>
       </form>
     </section>
   );
-}
+};
 
 export default Register;

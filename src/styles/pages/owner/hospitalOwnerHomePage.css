@@ -13,7 +13,6 @@
 .owner-hospital-info img {
     min-width: fit-content;
     max-height: 350px;
-    border-right: 1px solid gray;
     object-fit: cover;
 }
 
@@ -22,17 +21,33 @@
     flex: 1;
 }
 
-.owner-hospital-info_right table td:nth-child(2) {
-    width: 85%;
+.owner-hospital-info_right tr {
+    width: 100% !important;
+}
+
+.owner-hospital-info_right td:nth-child(1) {
+    width: 160px;
 }
 
 .queue-now {
     font-weight: bold;
 }
 
-#tablePatientList th:nth-child(1) {
-    width: 120px;
+#tablePatientList {
+    width: 100% !important;
+}
+
+#tablePatientList tr {
     text-align: center;
+}
+
+#tablePatientList td:nth-child(1) {
+    width: 120px;
+    text-align: center !important;
+}
+
+#tablePatientList td {
+    text-align: left;
 }
 
 .hospital-patient-list h2 {
@@ -42,9 +57,12 @@
 }
 
 .owner-table-col-action {
-    text-align: center;
+    justify-content: center;
+    display: flex;
+    gap: 10px;
 }
 
-.btn-patient-finish {
+.btn-patient-finish,
+.btn-patient-delete {
     width: 50px;
 }

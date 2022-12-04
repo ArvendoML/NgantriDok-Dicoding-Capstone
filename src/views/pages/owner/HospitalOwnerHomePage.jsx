@@ -1,9 +1,9 @@
 import React from "react";
-import { BsCheckLg } from "react-icons/bs";
+import { BsCheckLg, BsTrashFill } from "react-icons/bs";
 import "../../../styles/pages/owner/hospitalOwnerHomePage.css";
 import dummyImg from "../../../public/images/rumah-sakit.png";
 
-function HospitalOwnerHomePage() {
+const HospitalOwnerHomePage = () => {
   return (
     <main id="ownerHospitalPage">
       <section className="owner-hospital-info">
@@ -19,6 +19,14 @@ function HospitalOwnerHomePage() {
               <tr>
                 <td className="table-active">No. Telepon</td>
                 <td className="align-middle">123123123</td>
+              </tr>
+              <tr>
+                <td className="table-active">Deskripsi</td>
+                <td className="align-middle">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic fuga error culpa
+                  natus provident odit dolore nostrum fugiat ab obcaecati! Nobis illo iste
+                  reprehenderit architecto minus facere consectetur totam modi?
+                </td>
               </tr>
               <tr>
                 <td className="table-active">Total Antrian</td>
@@ -38,16 +46,26 @@ function HospitalOwnerHomePage() {
         <table id="tablePatientList" className="table table-striped table-bordered table-hover">
           <thead className="table-active">
             <tr>
-              <th scope="col">No. Antrian</th>
-              <th scope="col">Nama Pasien</th>
-              <th scope="col">No. Telepon</th>
-              <th scope="col">Gejala</th>
-              <th className="owner-table-col-action" scope="col">Aksi</th>
+              <th scope="col" style={{ width: "10%" }} className="align-middle">
+                No. Antrian
+              </th>
+              <th scope="col" style={{ width: "20%" }} className="align-middle">
+                Nama Pasien
+              </th>
+              <th scope="col" style={{ width: "20%" }} className="align-middle">
+                No. Telepon
+              </th>
+              <th scope="col" style={{ width: "40%" }} className="align-middle">
+                Gejala
+              </th>
+              <th scope="col" className="align-middle">
+                Aksi
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th className="align-middle" scope="row">1</th>
+              <td className="align-middle">1</td>
               <td className="align-middle">Dummy1</td>
               <td className="align-middle">123123</td>
               <td className="align-middle">Dummy Sickness</td>
@@ -55,10 +73,13 @@ function HospitalOwnerHomePage() {
                 <button type="button" className="btn btn-success btn-patient-finish">
                   <BsCheckLg />
                 </button>
+                <button type="button" className="btn btn-danger btn-patient-delete">
+                  <BsTrashFill />
+                </button>
               </td>
             </tr>
             <tr>
-              <th className="align-middle" scope="row">2</th>
+              <td className="align-middle">2</td>
               <td className="align-middle">Dummy2</td>
               <td className="align-middle">123123</td>
               <td className="align-middle">Dummy Sickness</td>
@@ -66,16 +87,22 @@ function HospitalOwnerHomePage() {
                 <button type="button" className="btn btn-success btn-patient-finish">
                   <BsCheckLg />
                 </button>
+                <button type="button" className="btn btn-danger btn-patient-delete">
+                  <BsTrashFill />
+                </button>
               </td>
             </tr>
             <tr>
-              <th className="align-middle" scope="row">3</th>
+              <td className="align-middle">3</td>
               <td className="align-middle">Dummy3</td>
               <td className="align-middle">123123</td>
               <td className="align-middle">Dummy Sickness</td>
               <td className="align-middle owner-table-col-action">
                 <button type="button" className="btn btn-success btn-patient-finish">
                   <BsCheckLg />
+                </button>
+                <button type="button" className="btn btn-danger btn-patient-delete">
+                  <BsTrashFill />
                 </button>
               </td>
             </tr>
@@ -84,6 +111,6 @@ function HospitalOwnerHomePage() {
       </section>
     </main>
   );
-}
+};
 
 export default HospitalOwnerHomePage;

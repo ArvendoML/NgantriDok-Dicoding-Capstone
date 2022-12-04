@@ -4,7 +4,7 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["plugin:react/recommended", "airbnb"],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -14,9 +14,7 @@
   },
   "plugins": ["react"],
   "rules": {
-    "linebreak-style": 0,
-    "quotes": 0,
-    "no-console": "off",
-    "jsx-a11y/label-has-associated-control": "off"
+    "react/prop-types": "off",
+    "no-alert": 0
   }
 }
