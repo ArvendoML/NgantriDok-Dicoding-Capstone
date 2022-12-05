@@ -1,9 +1,21 @@
+import { getOneHospital } from "./hospitalListData";
+
 const userData = [
   {
     id: 1,
     name: "John Doe",
     email: "john@example.com",
     password: "123123",
+    role: "member",
+    hospital_id: null,
+  },
+  {
+    id: 2,
+    name: "Owner Example",
+    email: "owner@example.com",
+    password: "123123",
+    role: "owner",
+    hospital_id: 1,
   },
 ];
 
@@ -17,4 +29,11 @@ const getUserData = () => {
   return user;
 };
 
-export { userData, checkUser, getUserData };
+const getUserHospitalData = () => {
+  const user = getUserData();
+  const hospitalData = getOneHospital(user.hospital_id);
+  
+  return hospitalData;
+};
+
+export { userData, checkUser, getUserData, getUserHospitalData };

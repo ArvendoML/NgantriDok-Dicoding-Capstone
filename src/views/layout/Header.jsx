@@ -1,20 +1,11 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { GrLogin, GrLogout } from "react-icons/gr";
 import "../../styles/layout/header.css";
 import avatarImg from "../../public/images/avatar.png";
 import appLogo from "../../public/images/ngantriDok-logo.png";
-import { logout } from "../../scripts/auth";
 
-const Header = ({ authedUser, setAuthedUser }) => {
-  const navigate = useNavigate();
-
-  const handleOnClickLogout = () => {
-    logout();
-    setAuthedUser(null);
-    navigate("/");
-  };
-
+const Header = ({ authedUser, handleOnClickLogout }) => {
   return (
     <header id="headerMain">
       <Link to="/">

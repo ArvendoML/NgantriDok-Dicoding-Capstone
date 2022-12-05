@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import HomePage from "../pages/HomePage";
 import HospitalListPage from "../pages/HospitalListPage";
@@ -11,11 +11,26 @@ import HospitalDetailPage from "../pages/HospitalDetailPage";
 import HospitalQueueRegistration from "../pages/HospitalQueueRegistration";
 import HospitalOwnerHomePage from "../pages/owner/HospitalOwnerHomePage";
 import PageNotFound from "../pages/PageNotFound";
+import HeaderOwner from "./owner/HeaderOwner";
+import { logout } from "../../scripts/auth";
 
 const MainPage = ({ authedUser, setAuthedUser }) => {
+  const navigate = useNavigate();
+
+  const handleOnClickLogout = () => {
+    logout();
+    setAuthedUser(null);
+    navigate("/login");
+  };
+
+  let header = <Header authedUser={authedUser} handleOnClickLogout={handleOnClickLogout} />;
+  if (authedUser.role === "owner") {
+    header = <HeaderOwner authedUser={authedUser} handleOnClickLogout={handleOnClickLogout} />;
+  }
+
   return (
     <>
-      <Header authedUser={authedUser} setAuthedUser={setAuthedUser} />
+      {header}
       <Routes>
         <Route path="*" element={<PageNotFound />} />
         <Route path="/" element={<HomePage />} />

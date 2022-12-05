@@ -21,10 +21,15 @@ const Login = ({ setAuthedUser }) => {
   const handleOnSubmitButton = async (event) => {
     event.preventDefault();
     const loginSuccess = await login(email, password);
+    const user = getUserData();
 
     if (loginSuccess === true) {
-      setAuthedUser(getUserData());
-      navigate("/");
+      setAuthedUser(user);
+      if (user.role === "owner") {
+        navigate("/owner");
+      } else {
+        navigate("/");
+      }
     } else {
       alert("Email/Password invalid!");
     }

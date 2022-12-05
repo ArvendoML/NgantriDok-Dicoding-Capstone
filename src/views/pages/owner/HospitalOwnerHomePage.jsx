@@ -2,46 +2,47 @@ import React from "react";
 import { BsCheckLg, BsTrashFill } from "react-icons/bs";
 import "../../../styles/pages/owner/hospitalOwnerHomePage.css";
 import dummyImg from "../../../public/images/rumah-sakit.png";
+import { getUserHospitalData } from "../../../scripts/userData";
 
 const HospitalOwnerHomePage = () => {
+  const hospitalData = getUserHospitalData() || [];
+
   return (
     <main id="ownerHospitalPage">
-      <section className="owner-hospital-info">
+      <section id="hospitalInfo" className="owner-hospital-info">
         <img src={dummyImg} alt="Gambar Hospital" />
         <div className="owner-hospital-info_right">
-          <h2>Hospital Name</h2>
+          <h2>{hospitalData.name}</h2>
           <table className="table table-hover table-bordered">
             <tbody>
               <tr>
                 <td className="table-active">Alamat</td>
-                <td className="align-middle">Jalan Dummy</td>
+                <td className="align-middle">{hospitalData.address}</td>
               </tr>
               <tr>
                 <td className="table-active">No. Telepon</td>
-                <td className="align-middle">123123123</td>
+                <td className="align-middle">{hospitalData.phoneNumber}</td>
               </tr>
               <tr>
                 <td className="table-active">Deskripsi</td>
-                <td className="align-middle">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic fuga error culpa
-                  natus provident odit dolore nostrum fugiat ab obcaecati! Nobis illo iste
-                  reprehenderit architecto minus facere consectetur totam modi?
-                </td>
+                <td className="align-middle">{hospitalData.description}</td>
               </tr>
               <tr>
                 <td className="table-active">Total Antrian</td>
-                <td className="align-middle">5</td>
+                <td className="align-middle">{hospitalData.totalQueue}</td>
               </tr>
               <tr className="queue-now">
                 <td className="table-active">Antrian Sekarang</td>
-                <td className="align-middle">1</td>
+                <td className="align-middle">{hospitalData.currQueue}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
+
       <hr />
-      <section className="hospital-patient-list">
+
+      <section id="hospitalPatientList" className="hospital-patient-list">
         <h2>Daftar Pasien</h2>
         <table id="tablePatientList" className="table table-striped table-bordered table-hover">
           <thead className="table-active">
