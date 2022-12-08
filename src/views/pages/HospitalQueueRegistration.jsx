@@ -1,13 +1,19 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { getOneHospital } from "../../scripts/data/hospitalListData";
+import { addNewPatient } from "../../scripts/data/patientListData";
+import { getUserData } from "../../scripts/data/userData";
 import "../../styles/pages/hospitalQueueRegistration.css";
 
 const HospitalQueueRegistration = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
   const [patientName, setPatientName] = useState();
   const [patientAge, setPatientAge] = useState();
   const [patientPhoneNumber, setPatientPhoneNumber] = useState();
   const [patientSymptom, setPatientSymptom] = useState();
+  const hospitalName = getOneHospital(id).name;
+  const userLogged = getUserData();
 
   const handleOnChangePatientName = (event) => {
     setPatientName(event.target.value);
@@ -27,7 +33,8 @@ const HospitalQueueRegistration = () => {
 
   const handleOnSubmitButton = (event) => {
     event.preventDefault();
-    console.log(patientName, patientAge, patientPhoneNumber, patientSymptom);
+    addNewPatient(id, userLogged.id, patientName, patientAge, patientPhoneNumber, patientSymptom);
+    alert("Pendaftaran antrian berhasil!");
     navigate("/queue");
   };
 
@@ -39,7 +46,7 @@ const HospitalQueueRegistration = () => {
         <div className="form-main">
           <div className="mb-3">
             <label className="form-label">Nama Rumah Sakit</label>
-            <input type="text" className="form-control" placeholder="Nama Rumah Sakit" disabled />
+            <input type="text" className="form-control" placeholder={hospitalName} disabled />
           </div>
           <div className="mb-3">
             <label className="form-label">Atas Nama</label>

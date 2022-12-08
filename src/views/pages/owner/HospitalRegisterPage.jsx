@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../../styles/pages/loginRegisterPage.css";
 import appLogo from "../../../public/images/ngantriDok-logo.png";
-import { getUserData } from "../../../scripts/userData";
+import { getUserData } from "../../../scripts/data/userData";
+import { addNewHospital } from "../../../scripts/data/hospitalListData";
 
 const HospitalRegisterPage = () => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const HospitalRegisterPage = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
+  const [addressCity, setAddressCity] = useState();
   const [address, setAddress] = useState();
   const [description, setDescription] = useState();
 
@@ -29,6 +31,10 @@ const HospitalRegisterPage = () => {
     setPhoneNumber(event.target.value);
   };
 
+  const handleOnChangeAddressCity = (event) => {
+    setAddressCity(event.target.value);
+  };
+
   const handleOnChangeAddress = (event) => {
     setAddress(event.target.value);
   };
@@ -39,7 +45,8 @@ const HospitalRegisterPage = () => {
 
   const handleOnSubmitButton = (event) => {
     event.preventDefault();
-    console.log(email, password, username, phoneNumber, address, description);
+    addNewHospital(username, email, password, phoneNumber, addressCity, address, description);
+    alert("Registrasi Rumah Sakit Berhasil!");
     navigate("/login");
   };
 
@@ -58,6 +65,7 @@ const HospitalRegisterPage = () => {
             <label className="form-label">Nama Rumah Sakit</label>
             <input
               type="text"
+              name="hospitalName"
               className="form-control"
               placeholder="Example"
               onChange={handleOnChangeUsername}
@@ -68,6 +76,7 @@ const HospitalRegisterPage = () => {
             <label className="form-label">Email</label>
             <input
               type="email"
+              name="email"
               className="form-control"
               placeholder="example@gmail.com"
               onChange={handleOnChangeEmail}
@@ -78,6 +87,7 @@ const HospitalRegisterPage = () => {
             <label className="form-label">Password</label>
             <input
               type="password"
+              name="password"
               className="form-control"
               placeholder="*********"
               onChange={handleOnChangePassword}
@@ -88,6 +98,7 @@ const HospitalRegisterPage = () => {
             <label className="form-label">No. Telepon</label>
             <input
               type="number"
+              name="phoneNumber"
               className="form-control"
               placeholder="ex: 08121234567"
               minLength={10}
@@ -97,9 +108,21 @@ const HospitalRegisterPage = () => {
             />
           </div>
           <div className="mb-3">
+            <label className="form-label">Kota</label>
+            <input
+              type="text"
+              name="addressCity"
+              className="form-control"
+              placeholder="ex: Jakarta"
+              onChange={handleOnChangeAddressCity}
+              required
+            />
+          </div>
+          <div className="mb-3">
             <label className="form-label">Alamat</label>
             <input
-              type="password"
+              type="text"
+              name="address"
               className="form-control"
               placeholder="ex: Jalan Muhammad Yani"
               onChange={handleOnChangeAddress}
@@ -109,7 +132,7 @@ const HospitalRegisterPage = () => {
           <div className="mb-3">
             <label className="form-label">Deskripsi</label>
             <textarea
-              type="password"
+              type="text"
               className="form-control"
               placeholder="Deskripsikan rumah sakitmu (spesialisasi, dll)"
               onChange={handleOnChangeDescription}

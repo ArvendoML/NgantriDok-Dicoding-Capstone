@@ -1,0 +1,26 @@
+#aboutUsPage h2 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.aboutUs-member-list {
+    display: flex;
+    gap: 30px;
+}
+
+#aboutUsPage .member-container {
+    width: 25%;
+}
+
+#aboutUsPage .member-card {
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#aboutUsPage .member-card img {
+    width: 85%;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}

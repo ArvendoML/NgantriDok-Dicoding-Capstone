@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { getUserData } from "../scripts/userData";
+import { getUserData } from "../scripts/data/userData";
 import MainPage from "./layout/MainPage";
 import LoginPage from "./pages/LoginPage";
 import HospitalRegisterPage from "./pages/owner/HospitalRegisterPage";

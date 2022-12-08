@@ -1,19 +1,24 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import dummyImg from "../../public/images/rumah-sakit.png";
-import { getOneHospital } from "../../scripts/hospitalListData";
-import { getUserData } from "../../scripts/userData";
+import { getOneHospital } from "../../scripts/data/hospitalListData";
+import {
+  getHospitalPatientDetail,
+  getHospitalPatientLength,
+} from "../../scripts/data/patientListData";
+import { getUserData } from "../../scripts/data/userData";
 import "../../styles/pages/hospitalDetailPage.css";
 
 const HospitalDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [hospitalData, setHospitalData] = useState([]);
+  const [patientLength, setPatientLength] = useState([]);
 
   useEffect(() => {
     const getHospitalData = async () => {
       setHospitalData(await getOneHospital(id));
+      setPatientLength(await getHospitalPatientLength(id));
     };
 
     getHospitalData();
@@ -22,10 +27,15 @@ const HospitalDetailPage = () => {
   const authedUser = getUserData();
   const handleOnClickRegisterBtn = () => {
     if (authedUser === null) {
-      navigate("/login");
       alert("Masuk terlebih dahulu untuk daftar!");
+      navigate("/login");
     } else {
-      navigate(`/queue-registration/${id}`);
+      const queue = getHospitalPatientDetail(authedUser.id);
+      if (queue) {
+        alert("Anda sudah mengantri! Batal antri terlebih dahulu untuk mengantri!");
+      } else {
+        navigate(`/queue-registration/${id}`);
+      }
     }
   };
 
@@ -33,7 +43,7 @@ const HospitalDetailPage = () => {
     <main id="hospitalDetailPage">
       <section className="hospital-detail-container">
         <div className="hospital-detail_left">
-          <img src={dummyImg} alt="nama" />
+          <img src={hospitalData.image_url} alt="nama" />
         </div>
         <div className="hospital-detail_right">
           <h2>{hospitalData.name}</h2>
@@ -45,8 +55,8 @@ const HospitalDetailPage = () => {
                 <td className="align-middle">{hospitalData.currQueue}</td>
               </tr>
               <tr>
-                <td>Total Antrian</td>
-                <td className="align-middle">{hospitalData.totalQueue}</td>
+                <td>Total Antrian Tersisa</td>
+                <td className="align-middle">{patientLength}</td>
               </tr>
               <tr>
                 <td>No. Telepon</td>

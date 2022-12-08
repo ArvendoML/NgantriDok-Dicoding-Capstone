@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import dummyImg from "../../public/images/rumah-sakit.png";
 
-const HospitalItemCard = ({ id, name, currQueue, city, address }) => {
+const HospitalItemCard = ({ id, name, image_url, currQueue, city, address }) => {
   return (
     <div className="hospital-item-card">
       <div className="card text-white">
-        <img className="card-img" src={dummyImg} alt="Hospital Name" />
+        <img className="card-img" src={image_url} alt="Hospital Name" />
         <div className="card-img-overlay">
           <Link to={`/detail/${id}`}>
             <h5 className="card-title">{name}</h5>

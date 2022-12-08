@@ -1,14 +1,16 @@
-import { checkUser } from "./userData";
+import { checkUser } from "./data/userData";
 
 const login = async (emailVal, passwordVal) => {
-  const user = await checkUser(emailVal)[0];
   let result = false;
+  const user = (await checkUser(emailVal)[0]) || [];
 
-  if (user.length !== 0) {
-    if (user.password === passwordVal) {
+  if (user) {
+    if (user.password === passwordVal.toString()) {
       localStorage.setItem("loggedUser", JSON.stringify(user));
       result = true;
     }
+  } else {
+    alert("Akun belum terdaftar!");
   }
 
   return result;

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../styles/pages/loginRegisterPage.css";
 import appLogo from "../../public/images/ngantriDok-logo.png";
 import { login } from "../../scripts/auth";
-import { getUserData } from "../../scripts/userData";
+import { getUserData } from "../../scripts/data/userData";
 
 const Login = ({ setAuthedUser }) => {
   const navigate = useNavigate();

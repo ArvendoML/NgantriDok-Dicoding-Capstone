@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // CSS
 import "./styles/global.css";
+import "./styles/styleResponsive.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

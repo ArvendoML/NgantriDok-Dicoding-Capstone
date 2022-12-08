@@ -9,6 +9,7 @@
 
 .hospital-detail-container {
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
     display: flex;
 }
 
@@ -18,6 +19,7 @@
 
 .hospital-detail_left img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 

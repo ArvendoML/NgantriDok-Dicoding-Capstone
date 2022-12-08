@@ -27,7 +27,7 @@ const Footer = () => {
 
       <section>
         <h5>Team</h5>
-        <Link to="/list">About Us</Link>
+        <Link to="/about-us">About Us</Link>
       </section>
 
       <p>Copyright &copy; Dicoding Capstone Team C22-240</p>

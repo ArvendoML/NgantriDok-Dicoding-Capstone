@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { GrLogin, GrLogout } from "react-icons/gr";
 import "../../styles/layout/header.css";
-import avatarImg from "../../public/images/avatar.png";
 import appLogo from "../../public/images/ngantriDok-logo.png";
+import HamburgerButton from "../components/HamburgerButton";
+import HeaderUser from "../components/header/HeaderUser";
 
 const Header = ({ authedUser, handleOnClickLogout }) => {
   return (
@@ -11,6 +11,7 @@ const Header = ({ authedUser, handleOnClickLogout }) => {
       <Link to="/">
         <img src={appLogo} alt="NgantriDok" className="app-img-logo" />
       </Link>
+      <HamburgerButton authedUser={authedUser} handleOnClickLogout={handleOnClickLogout} />
       <section className="header-right">
         <Link to="/list" className="btn btn-primary">
           Daftar Tempat
@@ -18,21 +19,7 @@ const Header = ({ authedUser, handleOnClickLogout }) => {
         <Link to="/queue" className="btn btn-primary">
           Antrian
         </Link>
-        <div className="header-user-info">
-          {authedUser === null ? (
-            <Link to="/login" className="btn-login-header">
-              <GrLogin />
-            </Link>
-          ) : (
-            <>
-              <p>{authedUser.name}</p>
-              <img src={avatarImg} alt="avatar" className="header-avatar" />
-              <button onClick={() => handleOnClickLogout()} className="btn-logout-header">
-                <GrLogout />
-              </button>
-            </>
-          )}
-        </div>
+        <HeaderUser authedUser={authedUser} handleOnClickLogout={handleOnClickLogout} />
       </section>
     </header>
   );

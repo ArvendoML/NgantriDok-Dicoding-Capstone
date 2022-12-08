@@ -1,0 +1,164 @@
+/* Responsive */
+@media (max-width: 769px) {
+
+    /* User */
+    /* Header */
+    .header-right {
+        display: none;
+    }
+
+    .btn-hamburger-mobile {
+        display: flex !important;
+        align-items: center;
+    }
+
+    .offcanvas {
+        width: 70% !important;
+    }
+
+    /* Queue Page */
+    #queuePage {
+        flex-direction: column;
+    }
+
+    .user-queue-info_left,
+    .user-queue-info_right {
+        width: 100%;
+    }
+
+    /* hospital List Page */
+    .hospital-list {
+        grid-template-columns: 1fr 1fr
+    }
+
+    /* Detail Page */
+    .hospital-detail-container {
+        flex-direction: column;
+    }
+
+    .hospital-detail_left,
+    .hospital-detail_right {
+        width: 100%;
+    }
+
+    /* About Us */
+    .aboutUs-member-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .aboutUs-member-list .member-container {
+        width: 100% !important;
+    }
+
+    /* Footer */
+    footer {
+        flex-wrap: wrap;
+    }
+
+    /* Owner */
+    #hospitalInfo {
+        flex-direction: column;
+    }
+
+    .owner-hospital-info_left {
+        width: 100%;
+    }
+}
+
+@media (max-width: 426px) {
+
+    /* User */
+    main {
+        padding: 30px 20px;
+    }
+
+    /* Header */
+    header {
+        padding-inline: 20px;
+    }
+
+    /* Login Page */
+    #loginPage,
+    #registerPage {
+        padding: 20px;
+    }
+
+    /* Main */
+    .main-hero-section h2 {
+        bottom: 10px;
+        left: 20px;
+        font-size: 15px;
+    }
+
+    .main-why-desc {
+        padding-inline: 20px;
+    }
+
+    .main-why-desc_icons {
+        flex-direction: column;
+    }
+
+    .main-why-desc_icons-card {
+        width: 100%;
+    }
+
+    .main-register {
+        margin-inline: 20px;
+        padding: 40px 20px;
+    }
+
+    /* hospital List Page */
+    #hospitalListPage {
+        padding: 20px;
+    }
+
+    .hospital-list {
+        grid-template-columns: 1fr;
+    }
+
+    /* Detail Page */
+    #hospitalDetailPage {
+        padding: 20px;
+    }
+
+    .hospital-detail_right {
+        padding: 20px;
+    }
+
+    /* Queue Page */
+    #queuePage {
+        padding: 30px 15px;
+    }
+
+    /* About Us */
+    .aboutUs-member-list {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    footer {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Owner */
+    #ownerHospitalPage {
+        padding: 30px 20px;
+    }
+
+    #hospitalPatientList {
+        overflow-x: auto;
+    }
+
+    .owner-hospital-info img {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 321px) {
+
+    .hospital-detail_right {
+        padding: 15px;
+    }
+}

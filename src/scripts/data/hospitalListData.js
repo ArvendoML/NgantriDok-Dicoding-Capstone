@@ -1,8 +1,12 @@
-const hospitalList = [
+import dummyImg from "../../public/images/rumah-sakit.png";
+import { getHospitalFirstPatientQueue } from "./patientListData";
+import { addNewUserOwner } from "./userData";
+
+let hospitalList = [
   {
     id: 1,
+    image_url: `${dummyImg}`,
     name: "Rumah Sakit Rustic",
-    totalQueue: 5,
     currQueue: 1,
     phoneNumber: "08112345678",
     city: "Jakarta",
@@ -13,8 +17,8 @@ const hospitalList = [
   {
     id: 2,
     name: "Rumah Sakit Lorem",
-    totalQueue: 1,
-    currQueue: 2,
+    image_url: `${dummyImg}`,
+    currQueue: 1,
     phoneNumber: "08112345678",
     city: "Jakarta",
     address: "Jalan Jalan Lorem ipsum dolor sit amet consectetur",
@@ -24,7 +28,7 @@ const hospitalList = [
   {
     id: 3,
     name: "Rumah Sakit Plastik",
-    totalQueue: 5,
+    image_url: `${dummyImg}`,
     currQueue: 1,
     phoneNumber: "08112345678",
     city: "Jakarta",
@@ -35,7 +39,7 @@ const hospitalList = [
   {
     id: 4,
     name: "Rumah Sakit Kakiku",
-    totalQueue: 5,
+    image_url: `${dummyImg}`,
     currQueue: 1,
     phoneNumber: "08112345678",
     city: "Jakarta",
@@ -51,8 +55,35 @@ const getAllHospitalList = () => {
 
 const getOneHospital = (id) => {
   const hospital = hospitalList.filter((data) => data.id === parseInt(id));
-  
+
   return hospital[0];
 };
 
-export { getAllHospitalList, getOneHospital };
+const addNewHospital = (name, email, password, phoneNumber, city, address, description) => {
+  const hospital = {
+    id: +new Date(),
+    name,
+    image_url: `${dummyImg}`,
+    currQueue: 0,
+    phoneNumber,
+    city,
+    address,
+    description,
+  };
+
+  addNewUserOwner(name, email, password, hospital.id);
+
+  hospitalList = [...hospitalList, hospital];
+};
+
+const changeOneHospitalCurrQueue = (hospital_id) => {
+  const hospitalIdx = hospitalList.findIndex((hospital) => hospital.id === hospital_id);
+  let trueQueue = getHospitalFirstPatientQueue(hospital_id);
+  if (!trueQueue) {
+    trueQueue = 0;
+  }
+
+  hospitalList[hospitalIdx].currQueue = trueQueue;
+};
+
+export { getAllHospitalList, getOneHospital, addNewHospital, changeOneHospitalCurrQueue };

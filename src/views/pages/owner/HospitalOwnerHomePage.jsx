@@ -1,16 +1,29 @@
-import React from "react";
-import { BsCheckLg, BsTrashFill } from "react-icons/bs";
+import React, { useState } from "react";
 import "../../../styles/pages/owner/hospitalOwnerHomePage.css";
-import dummyImg from "../../../public/images/rumah-sakit.png";
-import { getUserHospitalData } from "../../../scripts/userData";
+import { getUserHospitalData } from "../../../scripts/data/userData";
+import OwnerPagePatientList from "../../components/OwnerPagePatientList";
+import {
+  deleteHospitalPatient,
+  getHospitalPatientList,
+} from "../../../scripts/data/patientListData";
 
 const HospitalOwnerHomePage = () => {
   const hospitalData = getUserHospitalData() || [];
+  const [patientListData, setPatientListData] = useState(
+    getHospitalPatientList(hospitalData.id) || []
+  );
+
+  const handleDeletePatient = (user_id, hospital_id) => {
+    const patientList = deleteHospitalPatient(user_id, hospital_id);
+    setPatientListData(patientList);
+  };
 
   return (
     <main id="ownerHospitalPage">
       <section id="hospitalInfo" className="owner-hospital-info">
-        <img src={dummyImg} alt="Gambar Hospital" />
+        <div className="owner-hospital-info_left">
+          <img src={hospitalData.image_url} alt="Gambar Hospital" />
+        </div>
         <div className="owner-hospital-info_right">
           <h2>{hospitalData.name}</h2>
           <table className="table table-hover table-bordered">
@@ -28,8 +41,8 @@ const HospitalOwnerHomePage = () => {
                 <td className="align-middle">{hospitalData.description}</td>
               </tr>
               <tr>
-                <td className="table-active">Total Antrian</td>
-                <td className="align-middle">{hospitalData.totalQueue}</td>
+                <td className="table-active">Total Antrian Tersisa</td>
+                <td className="align-middle">{patientListData.length}</td>
               </tr>
               <tr className="queue-now">
                 <td className="table-active">Antrian Sekarang</td>
@@ -53,10 +66,13 @@ const HospitalOwnerHomePage = () => {
               <th scope="col" style={{ width: "20%" }} className="align-middle">
                 Nama Pasien
               </th>
-              <th scope="col" style={{ width: "20%" }} className="align-middle">
+              <th scope="col" style={{ width: "5%" }} className="align-middle col-age">
+                Umur
+              </th>
+              <th scope="col" style={{ width: "15%" }} className="align-middle">
                 No. Telepon
               </th>
-              <th scope="col" style={{ width: "40%" }} className="align-middle">
+              <th scope="col" style={{ width: "45%" }} className="align-middle">
                 Gejala
               </th>
               <th scope="col" className="align-middle">
@@ -65,48 +81,19 @@ const HospitalOwnerHomePage = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="align-middle">1</td>
-              <td className="align-middle">Dummy1</td>
-              <td className="align-middle">123123</td>
-              <td className="align-middle">Dummy Sickness</td>
-              <td className="align-middle owner-table-col-action">
-                <button type="button" className="btn btn-success btn-patient-finish">
-                  <BsCheckLg />
-                </button>
-                <button type="button" className="btn btn-danger btn-patient-delete">
-                  <BsTrashFill />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td className="align-middle">2</td>
-              <td className="align-middle">Dummy2</td>
-              <td className="align-middle">123123</td>
-              <td className="align-middle">Dummy Sickness</td>
-              <td className="align-middle owner-table-col-action">
-                <button type="button" className="btn btn-success btn-patient-finish">
-                  <BsCheckLg />
-                </button>
-                <button type="button" className="btn btn-danger btn-patient-delete">
-                  <BsTrashFill />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td className="align-middle">3</td>
-              <td className="align-middle">Dummy3</td>
-              <td className="align-middle">123123</td>
-              <td className="align-middle">Dummy Sickness</td>
-              <td className="align-middle owner-table-col-action">
-                <button type="button" className="btn btn-success btn-patient-finish">
-                  <BsCheckLg />
-                </button>
-                <button type="button" className="btn btn-danger btn-patient-delete">
-                  <BsTrashFill />
-                </button>
-              </td>
-            </tr>
+            {patientListData.length === 0 ? (
+              <tr>
+                <td colSpan={6}>Tidak ada Pasien Terdaftar!</td>
+              </tr>
+            ) : (
+              patientListData.map((patient) => (
+                <OwnerPagePatientList
+                  key={patient.id}
+                  {...patient}
+                  handleDeletePatient={handleDeletePatient}
+                />
+              ))
+            )}
           </tbody>
         </table>
       </section>

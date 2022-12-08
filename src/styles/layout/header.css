@@ -76,3 +76,58 @@ header .app-img-logo {
     background-color: rgb(254, 40, 40);
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
 }
+
+/* Hamburger button */
+.btn-hamburger-mobile {
+    display: none !important;
+    border: transparent !important;
+    background-color: transparent !important;
+    color: black !important;
+    font-size: 30px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.offcanvas-header {
+    border-bottom: 2px solid lightgray;
+}
+
+.offcanvas-title {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.offcanvas-title h5 {
+    margin: 0;
+}
+
+.header-mobile_user_info {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding-left: 15px;
+}
+
+.offcanvas-body {
+    padding: 20px 0 !important;
+}
+
+.offcanvas-body a {
+    padding: 15px 15px 15px 15px;
+    text-align: left;
+    color: black;
+    border: transparent;
+    background-color: transparent;
+}
+
+.offcanvas-body a:hover {
+    background-color: var(--color-main);
+    border-radius: 0;
+}
+
+.header-mobile_navigation {
+    display: flex;
+    flex-direction: column;
+}

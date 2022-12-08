@@ -63,6 +63,14 @@
     border-bottom: 1px solid lightgray;
 }
 
+.user-queue-info_left_body a {
+    color: black;
+}
+
+.user-queue-info_left_body a:hover {
+    color: grey;
+}
+
 .user-queue-info_right {
     width: 70%;
     padding: 20px;
@@ -86,6 +94,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    text-align: center;
     align-items: center;
     justify-content: center;
     padding: 30px;

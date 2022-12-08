@@ -10,7 +10,13 @@
 }
 
 .hospital-item-card {
+
     transition: transform .2s;
+}
+
+.hospital-item-card img {
+    object-fit: cover;
+    min-height: 300px;
 }
 
 .hospital-item-card a {

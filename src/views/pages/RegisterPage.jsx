@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/pages/loginRegisterPage.css";
 import appLogo from "../../public/images/ngantriDok-logo.png";
-import { getUserData } from "../../scripts/userData";
+import { addNewUserMember, getUserData } from "../../scripts/data/userData";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -24,7 +24,9 @@ const Register = () => {
 
   const handleOnSubmitButton = (event) => {
     event.preventDefault();
-    console.log(email, password, username);
+
+    addNewUserMember(username, email, password);
+    alert("Registrasi Berhasil!");
     navigate("/login");
   };
 
@@ -46,6 +48,7 @@ const Register = () => {
             <label className="form-label">Username</label>
             <input
               type="text"
+              name="name"
               className="form-control"
               placeholder="Example"
               onChange={handleOnChangeUsername}
@@ -56,6 +59,7 @@ const Register = () => {
             <label className="form-label">Email</label>
             <input
               type="email"
+              name="email"
               className="form-control"
               placeholder="example@gmail.com"
               onChange={handleOnChangeEmail}
@@ -66,6 +70,7 @@ const Register = () => {
             <label className="form-label">Password</label>
             <input
               type="password"
+              name="password"
               className="form-control"
               placeholder="*********"
               onChange={handleOnChangePassword}

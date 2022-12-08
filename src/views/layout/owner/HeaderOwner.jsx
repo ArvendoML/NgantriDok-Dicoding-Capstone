@@ -4,6 +4,7 @@ import { GrLogout } from "react-icons/gr";
 import "../../../styles/layout/header.css";
 import dummyImg from "../../../public/images/rumah-sakit.png";
 import appLogo from "../../../public/images/ngantriDok-logo.png";
+import HamburgerButton from "../../components/HamburgerButton";
 
 const HeaderOwner = ({ handleOnClickLogout, authedUser }) => {
   return (
@@ -11,15 +12,16 @@ const HeaderOwner = ({ handleOnClickLogout, authedUser }) => {
       <Link to="/owner">
         <img src={appLogo} alt="NgantriDok" className="app-img-logo" />
       </Link>
+      <HamburgerButton authedUser={authedUser} handleOnClickLogout={handleOnClickLogout} />
       <section className="header-right">
         <a href="#top" className="btn btn-primary">
-          Informasi
+          Atas
         </a>
         <a href="#hospitalPatientList" className="btn btn-primary">
           Daftar Pasien
         </a>
         <div className="header-user-info">
-          <p>{authedUser.name}</p>
+          <p className="header-username">{authedUser.name}</p>
           <img src={dummyImg} alt="avatar" className="header-avatar" />
           <button onClick={() => handleOnClickLogout()} className="btn-logout-header">
             <GrLogout />
